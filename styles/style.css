@@ -1,5 +1,20 @@
+body {
+    font-family: 'Albert Sans', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    background-color: #191F1F;
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 30px;
+    box-sizing: border-box;
+}
+
 .aldrich-regular {
-  font-family: "Aldrich", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Aldrich", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }

@@ -1,13 +1,33 @@
-
-body {
-  background-color: #7ab3d3;
-  font-family: 'Rubik', sans-serif;
-  color: #333;
-  /* color: #ffffff;  */
+.weather-app-container {
+  width: 90%;
+  max-width: 1000px;
+  box-sizing: border-box;
 }
 
 .app-header {
-  font-family: "Aldrich", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  margin-bottom: 30px;
 }
+
+.app-header h1 {
+  color: #ffffff;
+  font-size: 2.5em;
+  text-align: left;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #21354D;
+  border-radius: 15px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+}
+
