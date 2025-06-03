@@ -16,7 +16,8 @@
 
 .weather-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: auto auto;
   gap: 20px;
 }
 
@@ -43,25 +44,18 @@
 }
 
 .location-card {
-  grid-column: span 1;
-  min-height: 250px;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  min-height: 400px;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  text-align: center;
+  justify-content: flex-end;
+  align-items: flex-start;
+  text-align: left;
+  padding-bottom: 50px;
   position: relative;
   overflow: hidden;
-}
-
-.location-card .large-icon-placeholder {
-    width: 100px;
-    height: 100px;
-    border: 2px dashed #ffffff;
-    border-radius: 10px;
-    box-sizing: border-box;
-    align-self: center;
-    margin-bottom: 10px; 
 }
 
 .label {
@@ -72,15 +66,25 @@
   text-align: center;
 }
 
+.location-card .large-icon-placeholder {
+    width: 90%;
+    height: 200px;
+    border: 2px dashed #ffffff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    align-self: flex-start;
+    margin-bottom: 30px; 
+}
+
 .location-card .label {
   margin-top: 0;
-  margin-bottom: auto;
+  margin-bottom: 5px;
 }
 
 .location-card .city {
   font-size: 48px;
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 0;
   margin-bottom: 5px;
 }
 
@@ -92,7 +96,11 @@
 }
 
 .temperature-card {
+  grid-column: 2;
+  grid-row: 1;
+  min-height: 100%;
   justify-content: space-between;
+  min-width: 100%;
 }
 
 .temperature-card .label {
@@ -141,7 +149,7 @@
   font-size: 0.9em;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: auto; /* Push to the bottom */
+  margin-top: auto; 
   font-weight: 400;
 }
 
@@ -149,11 +157,18 @@
   background-color: #552ED6;
 }
 
-.sky-card, .city-input-card {
-  grid-column: span 1;
-  min-height: 180px;
+.sky-card { 
+  grid-column: 3;
+  grid-row: 1;
+  min-height: 190px;
   justify-content: flex-start;
   align-items: center;
+}
+
+.city-input-card {
+  grid-column: 3;
+  grid-row: 2;
+  min-height: 190px;
 }
 
 /* Not sure if we need this */
@@ -168,7 +183,7 @@
     border-radius: 8px;
     padding: 10px;
     font-size: 1em;
-    width: calc(100% - 20px);
+    width: 100%;
     box-sizing: border-box;
     margin-top: 15px;
     margin-bottom: 10px;
@@ -197,14 +212,15 @@
 }
 
 .weather-garden-card {
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 2px dashed #666; /* Dotted outline as in original wireframe */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    min-height: 150px;
+  grid-column: 1/4;
+  grid-row: 3;
+  border-radius: 15px;
+  padding: 20px;
+  border: 2px dashed #666; /* Dotted outline as in original wireframe */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  min-height: 120px;
 }
 
