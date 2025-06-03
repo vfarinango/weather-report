@@ -31,3 +31,180 @@
   text-align: center;
 }
 
+.temp-card-icon-placeholder,
+.sky-icon-placeholder,
+.city-input-icon-placeholder {
+  width: 60px;
+  height: 60px;
+  border: 2px dashed #ffffff;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.location-card {
+  grid-column: span 1;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.location-card .large-icon-placeholder {
+    width: 100px;
+    height: 100px;
+    border: 2px dashed #ffffff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    align-self: center;
+    margin-bottom: 10px; 
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 300;
+  color: #E9E9E9;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.location-card .label {
+  margin-top: 0;
+  margin-bottom: auto;
+}
+
+.location-card .city {
+  font-size: 48px;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.location-card .state {
+  font-size: 36px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.temperature-card {
+  justify-content: space-between;
+}
+
+.temperature-card .label {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.temperature-card .temperature {
+  font-size: 64px;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.temperature-card .temp-controls {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.temperature-card .temp-controls button {
+  border-radius: 50%;
+  border: none;
+  background-color: #ffffff;
+  color: black;
+  width: 40px;
+  height: 40px;
+  font-size: 36px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 400;
+}
+
+.temperature-card .temp-controls button:hover {
+  background-color: #552ED6;
+  color: #ffffff;
+}
+
+.realtime-btn {
+  background-color: #051527;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 15px;
+  font-size: 0.9em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto; /* Push to the bottom */
+  font-weight: 400;
+}
+
+.realtime-btn:hover {
+  background-color: #552ED6;
+}
+
+.sky-card, .city-input-card {
+  grid-column: span 1;
+  min-height: 180px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* Not sure if we need this */
+.sky-card .sky-icon-placeholder, .city-input-card .city-input-icon-placeholder {
+    margin: 0 auto 10px;
+}
+
+.dropdown, #city-input {
+    background-color: #ffffff;
+    color: #21354D;
+    border: 1px solid #5a5a7a;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1em;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* .dropdown:focus, #city-input:focus {
+    outline: none;
+    border-color: #8a8ac0;
+} */
+
+.reset-btn {
+    background-color: #051527;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+
+.reset-btn:hover {
+    background-color: #552ED6;
+}
+
+.weather-garden-card {
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px dashed #666; /* Dotted outline as in original wireframe */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    min-height: 150px;
+}
+
