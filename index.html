@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather Report</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Aldrich&display=swap" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link rel="stylesheet" href="styles/style.css" />
-  <link rel="stylesheet" href="styles/index.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&family=Aldrich&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/index.css" />
 </head>
 
 <body>
-  <div class="weather-app-container">
-    <header class="app-header">
-      <h1 class="aldrich-regular">Today's Weather Report</h1>
-    </header>
 
-    <main class="weather-grid">
-      <div class="card location-card">
-        <div class="large-icon-placeholder"></div>
-        <h2 class="label">Your current location</h2>
-        <h3 class="city" id="current-city">&lt;City&gt;</h3>
-        <h3 class="state" id="current-state">&lt;State&gt;</h3>
-      </div>
+    <div class="weather-app-container">
+        <header class="app-header">
+        <h1 class="aldrich-regular">Today's Weather Report</h1>
+        </header>
 
-      <div class="card temperature-card">
-        <div class="temp-card-icon-placeholder"></div>
-        <h2 class="label">Current Temperature</h2>
-        <h3 class="temperature" id="temperature">73&deg;F</h3>
-        <div class="temp-controls">
-          <button id="temp-down">-</button>
-          <button id="temp-up">+</button>
+        <main class="weather-grid">
+        <div class="card location-card">
+            <div class="large-icon-placeholder"></div>
+            <h2 class="label">Your current location</h2>
+            <h3 class="city" id="current-city">&lt;City&gt;</h3>
+            <h3 class="state" id="current-state">&lt;State&gt;</h3>
         </div>
-        <button class="realtime-btn">Get Realtime Temperature</button>
-      </div>
 
-      <div class="card sky-card">
-        <div class="sky-icon-placeholder"></div>
-        <label for="sky-select" class="label">Change the sky</label>
-        <select id="sky-select" class="dropdown">
-          <option value="cloudy">Cloudy</option>
-          <option value="sunny">Sunny</option>
-          <option value="rainy">Rainy</option>
-          <option value="snowy">Snowy</option>
-        </select>
-      </div>
+        <div class="card temperature-card">
+            <div class="temp-card-icon-placeholder"></div>
+            <h2 class="label">Current Temperature</h2>
+            <h3 class="temperature" id="temperature">73&deg;F</h3>
+            <div class="temp-controls">
+            <button id="temp-down">-</button>
+            <button id="temp-up">+</button>
+            </div>
+            <button class="realtime-btn">Get Realtime Temperature</button>
+        </div>
 
-      <div class="card city-input-card">
-        <div class="city-input-icon-placeholder"></div>
-        <label for="city-input" class="label">Select a City</label>
-        <input type="text" id="city-input" placeholder="Enter city name">
-        <button id="reset" class="reset-btn">Reset</button>
-      </div>
+        <div class="card sky-card">
+            <div class="sky-icon-placeholder"></div>
+            <label for="sky-select" class="label">Change the sky</label>
+            <select id="sky-select" class="dropdown">
+            <option value="cloudy">Cloudy</option>
+            <option value="sunny">Sunny</option>
+            <option value="rainy">Rainy</option>
+            <option value="snowy">Snowy</option>
+            </select>
+        </div>
 
-      <div class="card weather-garden-card">
-        <h2>Weather Garden</h2>
-        <div id="sky-emoji"></div>
-        <div id="ground-emoji"></div>
-      </div>
-    </main>
-  </div>
+        <div class="card city-input-card">
+            <div class="city-input-icon-placeholder"></div>
+            <label for="city-input" class="label">Select a City</label>
+            <input type="text" id="city-input" placeholder="Enter city name">
+            <button id="reset" class="reset-btn">Reset</button>
+        </div>
 
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="./src/index.js"></script>
+        <div class="card weather-garden-card">
+            <h2>Weather Garden</h2>
+            <div id="sky-emoji"></div>
+            <div id="ground-emoji"></div>
+        </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./src/index.js"></script>
 </body>
 </html>
