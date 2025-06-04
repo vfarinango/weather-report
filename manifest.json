@@ -14,6 +14,11 @@
   },
   "permissions": [
   ],
+  
+  "host_permissions": [
+    "http://localhost:5000/"
+  ],
+  
   "web_accessible_resources": [
     {
       "resources": ["index.js", "index.html", "index.css", "style.css"], 

@@ -67,3 +67,28 @@ document.addEventListener('DOMContentLoaded', () => {
         currentCity.textContent = "New York City";
     }
 });
+
+// Wave 4: API Call
+// const promiseResult = axios.get();
+
+// const handleResult = (response) => {
+//   /// use the contents of the response
+// }
+
+// const promiseAfterThen = promiseResult.then(handleResult);
+
+
+const realTimeBtn = getElementById('realtime-btn');
+const currentCityDisplay = getElementById('current-city');
+const temperatureDisplay = getElementById('temperature');
+
+
+const PROXY_SERVER_BASE_URL = 'http://127.0.0.1:5000';
+
+const weatherButtonEvent = () => {
+  if (realTimeBtn) {
+    realTimeBtn.addEventListener('click', fetchWeatherData);
+  } else {
+  console.error("Weather button with ID 'get-weather-btn' not found.");
+  };
+};
