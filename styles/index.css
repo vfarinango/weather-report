@@ -217,13 +217,27 @@
   grid-row: 3;
   border-radius: 15px;
   padding: 20px;
+  height: 150px;
   border: 2px dashed #666; /* Dotted outline as in original wireframe */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: #ffffff;
   min-height: 120px;
   background-color: transparent;
   font-size: 1.2em;
+}
+
+#sky-emoji,
+#ground-emoji {
+    font-size: 3em;
+    margin: 5px 0; 
+    white-space: pre-wrap; 
+    line-height: 1; 
+}
+
+.weather-garden-card h2 {
+    margin-bottom: 10px;
 }
 

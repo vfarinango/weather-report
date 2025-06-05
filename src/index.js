@@ -9,7 +9,7 @@ const groundEmoji = document.getElementById("ground-emoji");
 
 const cityInput = document.getElementById("city-input");
 const currentCityDisplay = document.getElementById("current-city");
-const realTimeBtn = document.getElementById("realtime-btn");
+const realTimeBtn = document.getElementById("get-realtime-btn");
 
 const PROXY_SERVER_BASE_URL = 'http://127.0.0.1:5000';
 
@@ -136,5 +136,42 @@ const fetchWeatherData = () => {
 if (realTimeBtn) {
   realTimeBtn.addEventListener('click', fetchWeatherData);
 } else {
-  console.error("Button with ID 'realtime-btn' not found.");
+  console.error("Button with ID 'get-realtime-btn' not found.");
 }
+
+// Wave 5: Changing Sky
+const skyOptionsMap = {
+  'cloudy': "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️",
+  'sunny': "☁️ ☁️ ☁️ ☀️ ☁️ ☁️",    
+  'rainy': "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧", 
+  'snowy': "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
+};
+
+const handleSkySelection = () => {
+  const skySelect = document.getElementById('sky-select');
+  const skyEmojiDisplay = document.getElementById('sky-emoji');
+
+  if (skySelect && skyEmojiDisplay) {
+    const selectedSkyOption = skySelect.value;
+    const selectedSkyVisual = skyOptionsMap[selectedSkyOption];
+    
+    skyEmojiDisplay.textContent = selectedSkyVisual;
+  };
+};
+
+const setupSkySelection = () => {
+  const skySelect = document.getElementById('sky-select');
+  const skyEmojiDisplay = document.getElementById('sky-emoji');
+
+  if (skySelect) {
+    skySelect.addEventListener('change', handleSkySelection);
+
+    handleSkySelection();
+  } else {
+    console.error("Sky select element with ID 'sky-select' not found. Cannot attach event listener.");
+  };
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupSkySelection();
+});
