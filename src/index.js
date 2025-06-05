@@ -60,7 +60,14 @@ const updateLocationCard = () => {
 
 if (cityInput) {
   cityInput.addEventListener('input', updateLocationCard);
-}
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const currentCity = document.getElementById('current-city');
+    if (currentCity) {
+        currentCity.textContent = "New York City";
+    }
+});
 
 
 // Wave 4
