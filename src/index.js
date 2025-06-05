@@ -182,3 +182,13 @@ const setupSkySelection = () => {
 document.addEventListener('DOMContentLoaded', () => {
   setupSkySelection();
 });
+
+const resetBtn = document.getElementById("reset");
+
+if (resetBtn && cityInput && currentCityDisplay) {
+  resetBtn.addEventListener("click", () => {
+    const defaultCity = "New York City";
+    cityInput.value = defaultCity;
+    currentCityDisplay.textContent = defaultCity;
+  });
+}
