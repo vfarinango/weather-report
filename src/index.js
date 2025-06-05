@@ -7,8 +7,17 @@ const tempUpBtn = document.getElementById("temp-up");
 const tempDownBtn = document.getElementById("temp-down");
 const groundEmoji = document.getElementById("ground-emoji");
 
-const updateTemperature = () => {
-  tempDisplay.innerHTML = `${temperature}&deg;F`;
+const cityInput = document.getElementById("city-input");
+const currentCityDisplay = document.getElementById("current-city");
+const realTimeBtn = document.getElementById("realtime-btn");
+
+const PROXY_SERVER_BASE_URL = 'http://127.0.0.1:5000';
+
+
+// Wave2
+const updateTemperatureVisuals = () => {
+  const tempC = Math.round((temperature - 32) * 5 / 9);
+  tempDisplay.innerHTML = `${temperature}&deg;F<br>⎯<br>${tempC}&deg;C`;
 
   if (temperature >= 80) {
     tempDisplay.style.color = "red";
@@ -28,67 +37,104 @@ const updateTemperature = () => {
   }
 };
 
+
+// changing temperature buttons
 tempUpBtn.addEventListener("click", () => {
   temperature += 1;
-  updateTemperature();
+  updateTemperatureVisuals();
 });
 
 tempDownBtn.addEventListener("click", () => {
   temperature -= 1;
-  updateTemperature();
+  updateTemperatureVisuals();
 });
 
-updateTemperature();
+updateTemperatureVisuals();
 
-
-// Wave 3 - City Input //
+// Wave 3
 const updateLocationCard = () => {
-    const currentCity = document.getElementById('current-city');
-    const cityInput = document.getElementById('city-input');
-    
-    if (currentCity && cityInput) {
-        const inputValue = cityInput.value;
-        currentCity.textContent = inputValue;
-    } else {
-        console.error("Missing HTML elements: 'current-city or -city-input' not found.");
-    }
+  if (currentCityDisplay && cityInput) {
+    currentCityDisplay.textContent = cityInput.value;
+  }
 };
 
-const cityInput = document.getElementById('city-input');
 if (cityInput) {
-    cityInput.addEventListener('input', updateLocationCard);
-} else {
-    console.error("Input element with ID 'city-input' not found. Cannot attach event listener.");
-};
+  cityInput.addEventListener('input', updateLocationCard);
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-    const currentCity = document.getElementById('current-city');
-    if (currentCity) {
-        currentCity.textContent = "New York City";
+
+// Wave 4
+
+const getWithRetry = (url, queryParams, attempt = 1) => {
+  return axios.get(url, { params: queryParams }).then((response) => {
+    const data = response.data;
+
+    if (data.error) {
+      if (attempt >= 5) {
+        console.log("Max attempts reached!");
+        return null;
+      }
+      console.log(`Retrying ${attempt}...`);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(getWithRetry(url, queryParams, attempt + 1));
+        }, 600 * attempt);
+      });
     }
-});
 
-// Wave 4: API Call
-// const promiseResult = axios.get();
-
-// const handleResult = (response) => {
-//   /// use the contents of the response
-// }
-
-// const promiseAfterThen = promiseResult.then(handleResult);
-
-
-const realTimeBtn = getElementById('realtime-btn');
-const currentCityDisplay = getElementById('current-city');
-const temperatureDisplay = getElementById('temperature');
-
-
-const PROXY_SERVER_BASE_URL = 'http://127.0.0.1:5000';
-
-const weatherButtonEvent = () => {
-  if (realTimeBtn) {
-    realTimeBtn.addEventListener('click', fetchWeatherData);
-  } else {
-  console.error("Weather button with ID 'get-weather-btn' not found.");
-  };
+    return response;
+  });
 };
+
+// Get coordinates
+const findLatitudeAndLongitude = (cityName) => {
+  const url = `${PROXY_SERVER_BASE_URL}/location`;
+  return getWithRetry(url, { q: cityName, format: 'json' }).then((response) => {
+    if (!response?.data?.[0]) {
+      console.error("No lat/lon found for city.");
+      return null;
+    }
+
+    const { lat, lon } = response.data[0];
+    return { lat, lon };
+  });
+};
+
+// Get weather report
+const findWeatherLatLon = (lat, lon) => {
+  const url = `${PROXY_SERVER_BASE_URL}/weather`;
+  return getWithRetry(url, { lat, lon }).then((response) => {
+    if (!response?.data?.main?.temp) {
+      console.error("Weather data not found.");
+      return null;
+    }
+
+    const tempK = response.data.main.temp;
+    const tempC = Math.round(tempK - 273.15);
+    const tempF = Math.round((tempC * 9) / 5 + 32);
+    return { tempF, tempC };
+  });
+};
+
+//"Get Realtime Temperature" button
+const fetchWeatherData = () => {
+  const city = currentCityDisplay.textContent.trim();
+  if (!city) return;
+
+  findLatitudeAndLongitude(city)
+    .then((coords) => {
+      if (!coords) return;
+      return findWeatherLatLon(coords.lat, coords.lon);
+    })
+    .then((result) => {
+      if (!result) return;
+      temperature = result.tempF;
+      updateTemperatureVisuals();
+    });
+};
+
+if (realTimeBtn) {
+  realTimeBtn.addEventListener('click', fetchWeatherData);
+} else {
+  console.error("Button with ID 'realtime-btn' not found.");
+}
