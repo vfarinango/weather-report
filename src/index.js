@@ -20,16 +20,16 @@ const updateTemperatureVisuals = () => {
   tempDisplay.innerHTML = `${temperature}&deg;F<br>⎯<br>${tempC}&deg;C`;
 
   if (temperature >= 80) {
-    tempDisplay.style.color = "red";
+    tempDisplay.style.color = "hotpink";
     groundEmoji.textContent = "🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂";
   } else if (temperature >= 70) {
-    tempDisplay.style.color = "orange";
+    tempDisplay.style.color = "pink";
     groundEmoji.textContent = "🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷";
   } else if (temperature >= 60) {
     tempDisplay.style.color = "yellow";
     groundEmoji.textContent = "🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃";
   } else if (temperature >= 50) {
-    tempDisplay.style.color = "green";
+    tempDisplay.style.color = "cyan";
     groundEmoji.textContent = "🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲";
   } else {
     tempDisplay.style.color = "teal";
@@ -54,8 +54,14 @@ updateTemperatureVisuals();
 // Wave 3
 const updateLocationCard = () => {
   if (currentCityDisplay && cityInput) {
-    currentCityDisplay.textContent = cityInput.value;
-  }
+    let cityText = cityInput.value.trim(); 
+
+    if (cityText.length > 0 && cityText.charAt(cityText.length - 1) !== ',') {
+      cityText += ',';
+    };
+
+    currentCityDisplay.textContent = cityText;
+  };
 };
 
 if (cityInput) {
@@ -65,7 +71,7 @@ if (cityInput) {
 document.addEventListener('DOMContentLoaded', () => {
     const currentCity = document.getElementById('current-city');
     if (currentCity) {
-        currentCity.textContent = "New York City";
+        currentCity.textContent = "New York City,";
     }
 });
 
