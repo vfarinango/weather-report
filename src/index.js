@@ -163,10 +163,7 @@ const skyOptionsMap = {
   'snowy': "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"
 };
 
-const handleSkySelection = () => {
-  const skySelect = document.getElementById('sky-select');
-  const skyEmojiDisplay = document.getElementById('sky-emoji');
-
+const handleSkySelection = (skySelect, skyEmojiDisplay) => {
   if (skySelect && skyEmojiDisplay) {
     const selectedSkyOption = skySelect.value;
     const selectedSkyVisual = skyOptionsMap[selectedSkyOption];
@@ -176,13 +173,15 @@ const handleSkySelection = () => {
 };
 
 const setupSkySelection = () => {
-  if (skySelect) {
-    skySelect.addEventListener('change', handleSkySelection);
-
-    handleSkySelection();
+  const skySelect = document.getElementById('sky-select');
+  const skyEmojiDisplay = document.getElementById('sky-emoji');
+  
+  if (skySelect && skyEmojiDisplay) {
+    skySelect.addEventListener('change', () => handleSkySelection(skySelect, skyEmojiDisplay));
+    handleSkySelection(skySelect, skyEmojiDisplay);
   } else {
-    console.error("Sky select element with ID 'sky-select' not found. Cannot attach event listener.");
-  };
+    console.error("Sky select element(s) not found. Cannot attach event listener.");
+  }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
