@@ -176,9 +176,6 @@ const handleSkySelection = () => {
 };
 
 const setupSkySelection = () => {
-  const skySelect = document.getElementById('sky-select');
-  const skyEmojiDisplay = document.getElementById('sky-emoji');
-
   if (skySelect) {
     skySelect.addEventListener('change', handleSkySelection);
 
