@@ -141,6 +141,8 @@ const fetchWeatherData = () => {
     })
     .then((result) => {
       if (!result) return;
+      console.log("Realtime weather result:", result);
+
       temperature = result.tempF;
       updateTemperatureVisuals();
     });
@@ -189,6 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSkySelection();
 });
 
+
+// Wave 6
 const resetBtn = document.getElementById("reset");
 
 if (resetBtn && cityInput && currentCityDisplay) {
