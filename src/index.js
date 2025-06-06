@@ -10,7 +10,9 @@ const groundEmoji = document.getElementById("ground-emoji");
 const cityInput = document.getElementById("city-input");
 const currentCityDisplay = document.getElementById("current-city");
 const realTimeBtn = document.getElementById("get-realtime-btn");
+const resetBtn = document.getElementById("reset");
 
+const DEFAULT_CITY = "New York City";
 const PROXY_SERVER_BASE_URL = 'http://127.0.0.1:5000';
 
 
@@ -69,9 +71,8 @@ if (cityInput) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const currentCity = document.getElementById('current-city');
-    if (currentCity) {
-        currentCity.textContent = "New York City,";
+    if (currentCityDisplay) {
+        currentCityDisplay.textContent = DEFAULT_CITY;
     }
 });
 
@@ -193,12 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Wave 6
-const resetBtn = document.getElementById("reset");
 
 if (resetBtn && cityInput && currentCityDisplay) {
   resetBtn.addEventListener("click", () => {
-    const defaultCity = "New York City";
-    cityInput.value = defaultCity;
-    currentCityDisplay.textContent = defaultCity;
+    cityInput.value = DEFAULT_CITY;
+    currentCityDisplay.textContent = DEFAULT_CITY;
   });
 }
