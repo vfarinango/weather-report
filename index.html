@@ -22,14 +22,18 @@
 
         <main class="weather-grid">
         <div class="card location-card">
-            <div class="large-icon-placeholder"></div>
+            <div class="large-icon-placeholder">
+                <img id="main-weather-icon" alt="" src="assets/sun.png">
+            </div>
             <h2 class="label">Your current location</h2>
             <h3 class="city" id="current-city"></h3>
             <h3 class="state" id="current-state">&lt;USA&gt;</h3>
         </div>
 
         <div class="card temperature-card">
-            <div class="temp-card-icon-placeholder"></div>
+            <div class="temp-card-icon-placeholder">
+                <img id="sun-icon" alt="" src="assets/sunny_forecast_icon.png">
+            </div>
             <h2 class="label">Current Temperature</h2>
             <h3 class="temperature" id="temperature">73&deg;F</h3>
             <div class="temp-controls">
@@ -40,7 +44,9 @@
         </div>
 
         <div class="card sky-card">
-            <div class="sky-icon-placeholder"></div>
+            <div class="sky-icon-placeholder">
+                <img id="cloud-icon" alt="" src="assets/weather_cloudy_forecast_icon.png">
+            </div>
             <label for="sky-select" class="label">Change the sky</label>
             <select id="sky-select" class="dropdown">
             <option value="cloudy">Cloudy</option>
@@ -51,14 +57,16 @@
         </div>
 
         <div class="card city-input-card">
-            <div class="city-input-icon-placeholder"></div>
+            <div class="city-input-icon-placeholder">
+                <img id="location-icon" alt="" src="assets/location_map_marker_icon.png">
+            </div>
             <label for="city-input" class="label">Select a City</label>
             <input type="text" id="city-input" placeholder="Enter city name">
             <button id="reset" class="reset-btn">Reset</button>
         </div>
 
         <div class="card weather-garden-card">
-            <h2>Weather Garden</h2>
+            <h2>Your Weather Garden</h2>
             <div id="sky-emoji"></div>
             <div id="ground-emoji"></div>
         </div>
